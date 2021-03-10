@@ -41,7 +41,7 @@ export default class CalendarHeader extends Component {
     } else {
       return (
         <div id="header-position">
-          <div numeric>{this.getNameOfMonth(this.props.month)}</div>
+          <div>{this.getNameOfMonth(this.props.month)}</div>
           <div>{this.props.year}</div>
         </div>
       );

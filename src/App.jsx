@@ -111,7 +111,7 @@ export default class App extends Component {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell onClick={this.handleClickPrevious} numeric>
+                <TableCell onClick={this.handleClickPrevious}>
                   <KeyboardArrowLeft />
                 </TableCell>
                 <Header
