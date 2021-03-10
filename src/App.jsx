@@ -106,16 +106,12 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="calendar">
-        <Paper className="calendar-paper">
+      <div>
+        <Paper>
           <Table>
             <TableHead>
-              <TableRow className="top">
-                <TableCell
-                  className="previous"
-                  onClick={this.handleClickPrevious}
-                  numeric
-                >
+              <TableRow>
+                <TableCell onClick={this.handleClickPrevious} numeric>
                   <KeyboardArrowLeft />
                 </TableCell>
                 <Header
@@ -124,7 +120,7 @@ export default class App extends Component {
                   currentView={this.state.currentView}
                   onChangeCurrentView={this.onChangeCurrentView}
                 />
-                <TableCell className="next" onClick={this.handleClickNext}>
+                <TableCell onClick={this.handleClickNext}>
                   <KeyboardArrowRight />
                 </TableCell>
               </TableRow>
