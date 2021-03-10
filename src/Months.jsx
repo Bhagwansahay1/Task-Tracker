@@ -41,7 +41,7 @@ export default class Months extends Component {
 
   render() {
     return (
-      <div className="months">
+      <div>
         <Table>
           <TableBody>
             {this.props.arrayOfMonths.map((months) => {
@@ -53,24 +53,14 @@ export default class Months extends Component {
                       this.getNumberOfMonth(month) === new Date().getMonth()
                     ) {
                       return (
-                        <TableCell className="month-tableCell thisMonth">
-                          <div
-                            className="month"
-                            onClick={this.handleClickMonth}
-                          >
-                            {month}
-                          </div>
+                        <TableCell>
+                          <div onClick={this.handleClickMonth}>{month}</div>
                         </TableCell>
                       );
                     } else {
                       return (
-                        <TableCell className="month-tableCell">
-                          <div
-                            className="month"
-                            onClick={this.handleClickMonth}
-                          >
-                            {month}
-                          </div>
+                        <TableCell>
+                          <div onClick={this.handleClickMonth}>{month}</div>
                         </TableCell>
                       );
                     }

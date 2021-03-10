@@ -58,11 +58,7 @@ export default class Day extends Component {
           <TableRow>
             {dayOfWeeks.map((dayOfWeek, index) => {
               if (index === 0 || index === 6) {
-                return (
-                  <TableCell className="holidays" numeric>
-                    {dayOfWeek}
-                  </TableCell>
-                );
+                return <TableCell numeric>{dayOfWeek}</TableCell>;
               } else {
                 return <TableCell numeric>{dayOfWeek}</TableCell>;
               }
@@ -81,18 +77,15 @@ export default class Day extends Component {
                   ) {
                     if (index === 0 || index === 6) {
                       return (
-                        <TableCell className="today chosenDay" numeric>
-                          <div
-                            className="holidays"
-                            onClick={this.openModal.bind(this, day)}
-                          >
+                        <TableCell numeric>
+                          <div onClick={this.openModal.bind(this, day)}>
                             {day}
                           </div>
                         </TableCell>
                       );
                     } else {
                       return (
-                        <TableCell className="today chosenDay" numeric>
+                        <TableCell numeric>
                           <div onClick={this.openModal.bind(this, day)}>
                             {day}
                           </div>
@@ -102,18 +95,15 @@ export default class Day extends Component {
                   } else {
                     if (index === 0 || index === 6) {
                       return (
-                        <TableCell className="chosenDay" numeric>
-                          <div
-                            className="holidays"
-                            onClick={this.openModal.bind(this, day)}
-                          >
+                        <TableCell numeric>
+                          <div onClick={this.openModal.bind(this, day)}>
                             {day}
                           </div>
                         </TableCell>
                       );
                     } else {
                       return (
-                        <TableCell className="chosenDay" numeric>
+                        <TableCell numeric>
                           <div onClick={this.openModal.bind(this, day)}>
                             {day}
                           </div>
@@ -132,7 +122,7 @@ export default class Day extends Component {
 
   render() {
     return (
-      <div className="days">
+      <div>
         <Paper>{this.createTable(this.props.year, this.props.month)}</Paper>
       </div>
     );

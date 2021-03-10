@@ -35,16 +35,14 @@ export default class CalendarHeader extends Component {
     if (this.props.currentView === "months") {
       return (
         <div id="header-position">
-          <div className="header-only-year">{this.props.year}</div>
+          <div>{this.props.year}</div>
         </div>
       );
     } else {
       return (
         <div id="header-position">
-          <div className="header-month" numeric>
-            {this.getNameOfMonth(this.props.month)}
-          </div>
-          <div className="header-year">{this.props.year}</div>
+          <div numeric>{this.getNameOfMonth(this.props.month)}</div>
+          <div>{this.props.year}</div>
         </div>
       );
     }
@@ -52,7 +50,7 @@ export default class CalendarHeader extends Component {
 
   render() {
     return (
-      <TableCell className="calendarHeader" onClick={this.handleClickMonths}>
+      <TableCell onClick={this.handleClickMonths}>
         {this.currentHeader}
       </TableCell>
     );
