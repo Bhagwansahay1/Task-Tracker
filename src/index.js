@@ -1,14 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App.jsx";
-import reportWebVitals from "./reportWebVitals";
+import Calendar from "./My1";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <React.StrictMode>{<Calendar />}</React.StrictMode>,
   document.getElementById("root")
 );
-
-reportWebVitals();
