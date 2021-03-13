@@ -2,12 +2,13 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 const app = firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: "AIzaSyC7d8cfDwHCkYqZdgVoQuBqbD7hBSxcwwU",
+  authDomain: "task-traker-app.firebaseapp.com",
+  projectId: "task-traker-app",
+  storageBucket: "task-traker-app.appspot.com",
+  messagingSenderId: "281393660672",
+  appId: "1:281393660672:web:34cc7c66be6129ee1029e5",
+  measurementId: "G-X7B7GP7KP1",
 });
 
 export const auth = app.auth();

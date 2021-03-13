@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useState } from "react";
-import Alert from "@material-ui/lab/Alert";
+import Alert from "@material-ui/core/Alert";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -57,7 +57,7 @@ export default function SignUp() {
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  // const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -70,7 +70,7 @@ export default function SignUp() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      // history.push("/");
     } catch {
       setError("Failed to create an account");
     }
@@ -148,7 +148,7 @@ export default function SignUp() {
                 name="password"
                 label="Confirm Password"
                 type="password"
-                id="password"
+                id="confirmpassword"
                 autoComplete="current-password"
                 ref={passwordConfirmRef}
               />
@@ -156,7 +156,7 @@ export default function SignUp() {
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                label="hamari duniya me aapka swagat h"
               />
             </Grid>
           </Grid>
