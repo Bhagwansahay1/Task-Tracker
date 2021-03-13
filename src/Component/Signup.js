@@ -1,4 +1,6 @@
 import React from "react";
+import { useRef, useState } from "react";
+import Alert from "@material-ui/lab/Alert";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,7 +14,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { Link } from "react-router-dom";
+import { useAuth } from "../Authentication/Auth.js";
+import { Link, useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -39,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -48,6 +51,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signup } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match");
+    }
+
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
+    } catch {
+      setError("Failed to create an account");
+    }
+
+    setLoading(false);
+  }
   const classes = useStyles();
 
   return (
@@ -60,7 +89,8 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        {error && <Alert severity="warning">{error}</Alert>}
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -94,6 +124,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                ref={emailRef}
               />
             </Grid>
             <Grid item xs={12}>
@@ -106,6 +137,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                ref={passwordRef}
               />
             </Grid>
             <Grid item xs={12}>
@@ -118,6 +150,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                ref={passwordConfirmRef}
               />
             </Grid>
             <Grid item xs={12}>
@@ -132,6 +165,7 @@ export default function SignUp() {
             fullWidth
             variant="contained"
             color="primary"
+            disabled={loading}
             className={classes.submit}
           >
             Sign Up
