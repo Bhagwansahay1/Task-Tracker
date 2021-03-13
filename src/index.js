@@ -1,9 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Calendar from "./My1";
-
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 ReactDOM.render(
-  <React.StrictMode>{<Calendar />}</React.StrictMode>,
+  <>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </>,
   document.getElementById("root")
 );
