@@ -1,22 +1,23 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-import SignIn from "./Signin";
+import Home from "./Home";
+import Signin from "./Signin";
 import SignUp from "./Signup";
-import Calendar from "./Calendar";
-import { AuthsProvider } from "../Authentication/Auth";
+import Calender from "./Calendar";
+import { AuthProvider } from "../Authentication/Auth";
 const App = () => {
   return (
     <>
-      <Router>
-        <AuthsProvider>
+      <AuthProvider>
+        <Router>
           <Switch>
-            <Route exact path="/" component={SignIn} />
+            <Route PrivateRoute exact path="/" component={Home} />
+            <Route exact path="/signin" component={Signin} />
             <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/calendar" component={Calendar} />
+            <Route exact path="/calender" component={Calender} />
           </Switch>
-        </AuthsProvider>
-      </Router>
+        </Router>
+      </AuthProvider>
     </>
   );
 };

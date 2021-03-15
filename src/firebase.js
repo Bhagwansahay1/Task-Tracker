@@ -11,5 +11,4 @@ const app = firebase.initializeApp({
   measurementId: "G-X7B7GP7KP1",
 });
 
-export const auth = app.auth();
 export default app;

@@ -1,38 +1,25 @@
-import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../firebase";
-
-const Auth = React.createContext();
-
-export function useAuth() {
-  return useContext(Auth);
-}
-
-export function AuthsProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState();
-  const [loading, setLoading] = useState(true);
-
-  function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
-  }
-
-  function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
-  }
-
+import React, { useState, useEffect } from "react";
+import app from "../firebase";
+export const AuthContext = React.createContext();
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [pending, setPending] = useState(true);
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    app.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
-      setLoading(false);
+      setPending(false);
     });
-
-    return unsubscribe;
   }, []);
-
-  const value = {
-    currentUser,
-    login,
-    signup,
-  };
-
-  return <Auth.Provider value={value}>{!loading && children}</Auth.Provider>;
-}
+  if (pending) {
+    return <>Please wait...</>;
+  }
+  return (
+    <AuthContext.Provider
+      value={{
+        currentUser,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
