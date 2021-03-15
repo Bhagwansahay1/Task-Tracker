@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 const app = firebase.initializeApp({
+  // hello
   apiKey: "AIzaSyC7d8cfDwHCkYqZdgVoQuBqbD7hBSxcwwU",
   authDomain: "task-traker-app.firebaseapp.com",
   projectId: "task-traker-app",
